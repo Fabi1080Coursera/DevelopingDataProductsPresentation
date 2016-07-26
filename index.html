@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Product Assignment</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Product Assignment">
+  <meta name="author" content="Fabian Hertwig">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Product Assignment</h1>
+    <h2>Demonstrationg the Central Limit Theorem Shiny Application</h2>
+    <p>Fabian Hertwig<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The Central Limit Theorem</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>If you take any distribution and take samples of that distribution, then the means of that many samples form a normal distribution.</li>
+<li>The mean of these new sample means approximate the mean value of the source distribution.</li>
+<li>The standard deviation of the sample means approximate the standard deviation of the source distribution devided by the square root of the sample size.</li>
+</ol>
+
+<p>For example you have 1000 observations which follow an exponential distribution. From that distribution you take 10 samples and calculate their mean value. You do that 100 times. The distribution of these 100 means should be normally distributed, even though the source distribution followed an exponential distribution. If you calculate the mean value of that 100 sample means, it should be very close to the mean value of the source distribution. If you calculate the standard deviation of the 100 sample means and multiply it by the square root of 10 - the sampel size - you should be very close to the standard deviation of the source distribution.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Example Visualized, Exponential Distribution</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+<p>Here we see a histogram of an exponential distribution with 1000 observations. It&#39;s mean is 0.9660901 and it&#39;s standard deviation is 0.9844057</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Example Visualized, Sample Means Distribution</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
+
+<p>We took 10 samples anc calculated their mean. That was repeated 100 times. The distribution of the 100 means is plotted here. It looks like a normal distribution. It&#39;s mean is 0.9339488 and it&#39;s standard deviation is 0.2992768. Multiplied by the square root of 10, the approximated standard deviation is 0.9463965.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <article data-timings="">
+    <p>We see that the central limit theorem seems to be true, what about a more observations in the source distribution and a bigger sample size?
+We will now generate a distribution with 100000 observations and take samples of size of 67 and repeat that 1000 times.</p>
+
+<p>Now we see the form of a normal distribution a little bit better.</p>
+
+<p><img src="figure/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"></p>
+
+<p>The source distributions mean is 0.998029 and it&#39;s standard deviation is 1.0008479</p>
+
+<p>The mean of the sample means is 1.006168 and it&#39;s standard deviation is 0.1261716. Multiplied by the square root of 67, the approximated standard deviation is 1.0327592.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The Central Limit Theorem'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Example Visualized, Exponential Distribution'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Example Visualized, Sample Means Distribution'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NA'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

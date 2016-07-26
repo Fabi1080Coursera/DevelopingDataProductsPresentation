@@ -1,0 +1,104 @@
+---
+title       : Developing Data Product Assignment
+subtitle    : Demonstrationg the Central Limit Theorem Shiny Application
+author      : Fabian Hertwig
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+```{r, include=FALSE}
+library(ggplot2)
+library(gridExtra)
+```
+
+
+## The Central Limit Theorem
+ 1. If you take any distribution and take samples of that distribution, then the means of that many samples form a normal distribution.
+ 2. The mean of these new sample means approximate the mean value of the source distribution.
+ 3. The standard deviation of the sample means approximate the standard deviation of the source distribution devided by the square root of the sample size.
+
+
+For example you have 1000 observations which follow an exponential distribution. From that distribution you take 10 samples and calculate their mean value. You do that 100 times. The distribution of these 100 means should be normally distributed, even though the source distribution followed an exponential distribution. If you calculate the mean value of that 100 sample means, it should be very close to the mean value of the source distribution. If you calculate the standard deviation of the 100 sample means and multiply it by the square root of 10 - the sampel size - you should be very close to the standard deviation of the source distribution.
+
+--- .class #id 
+
+## Example Visualized, Exponential Distribution
+
+```{r, echo=FALSE, fig.height = 5}
+data <- data.frame(observation = rexp(1000))
+
+ ggplot(data = data, aes(x = observation)) +
+      geom_histogram(binwidth = 0.1, col = "black") +
+      geom_vline(xintercept = mean(data$observation), col = "red") +
+      labs(title = "Source Distribution", x = "Observations (Mean in red)")
+
+```
+
+Here we see a histogram of an exponential distribution with 1000 observations. It's mean is `r mean(data$observation)` and it's standard deviation is `r sd(data$observation)`
+
+--- 
+
+## Example Visualized, Sample Means Distribution
+
+
+```{r, echo=FALSE, fig.height = 5}
+sampledata <- NULL
+    for(i in 1:100){
+      sample <- sample(1000, 10)
+      sampledata <- rbind(sampledata, data[sample,])
+    }
+sampledata <- data.frame(means = rowMeans(sampledata))
+
+ ggplot(data = sampledata, aes(x = means)) +
+      geom_histogram(binwidth = 0.1, col = "black") +
+      geom_vline(xintercept = mean(sampledata$means), col = "red") +
+      labs(title = "Sample Means Distribution", x = "Sample Means (Mean in red)")
+```
+
+We took 10 samples anc calculated their mean. That was repeated 100 times. The distribution of the 100 means is plotted here. It looks like a normal distribution. It's mean is `r mean(sampledata$means)` and it's standard deviation is `r sd(sampledata$means)`. Multiplied by the square root of 10, the approximated standard deviation is `r sd(sampledata$means) * sqrt(10)`.
+
+
+--- 
+
+We see that the central limit theorem seems to be true, what about a more observations in the source distribution and a bigger sample size?
+We will now generate a distribution with 100000 observations and take samples of size of 67 and repeat that 1000 times.
+
+```{r, echo=FALSE}
+data <- data.frame(observation = rexp(100000))
+
+sampledata <- NULL
+for(i in 1:1000){ #repeat 1000 times
+  sample <- sample(100000, 67) #take 67 samples out of 100000 possible values
+  sampledata <- rbind(sampledata, data[sample,]) #add them as a row to a dataframe
+}
+sampledata <- data.frame(means = rowMeans(sampledata)) #calculate the mean of each row
+```
+
+
+Now we see the form of a normal distribution a little bit better.
+
+```{r, echo=FALSE, fig.height = 5, fig.width= 12}
+
+p1 <- ggplot(data = data, aes(x = observation)) +
+      geom_histogram(binwidth = 0.1, col = "black") +
+      geom_vline(xintercept = mean(data$observation), col = "red") +
+      labs(title = "Source Distribution", x = "Observations (Mean in red)")
+
+p2 <- ggplot(data = sampledata, aes(x = means)) +
+      geom_histogram(binwidth = 0.01, col = "black") +
+      geom_vline(xintercept = mean(sampledata$means), col = "red") +
+      labs(title = "Sample Means Distribution", x = "Sample Means (Mean in red)")
+
+grid.arrange(p1, p2, ncol = 2)
+
+```
+
+
+The source distributions mean is `r mean(data$observation)` and it's standard deviation is `r sd(data$observation)`
+
+The mean of the sample means is `r mean(sampledata$means)` and it's standard deviation is `r sd(sampledata$means)`. Multiplied by the square root of 67, the approximated standard deviation is `r sd(sampledata$means) * sqrt(67)`.
