@@ -28,7 +28,7 @@ For example you have 1000 observations which follow an exponential distribution.
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
 
-Here we see a histogram of an exponential distribution with 1000 observations. It's mean is 0.9660901 and it's standard deviation is 0.9844057
+Here we see a histogram of an exponential distribution with 1000 observations. It's mean is 0.9853238 and it's standard deviation is 1.0122355
 
 --- 
 
@@ -37,7 +37,7 @@ Here we see a histogram of an exponential distribution with 1000 observations. I
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
 
-We took 10 samples anc calculated their mean. That was repeated 100 times. The distribution of the 100 means is plotted here. It looks like a normal distribution. It's mean is 0.9339488 and it's standard deviation is 0.2992768. Multiplied by the square root of 10, the approximated standard deviation is 0.9463965.
+We took 10 samples anc calculated their mean. That was repeated 100 times. The distribution of the 100 means is plotted here. It looks like a normal distribution. It's mean is 0.947151 and it's standard deviation is 0.3036437. Multiplied by the square root of 10, the approximated standard deviation is 0.9602057.
 
 
 --- 
@@ -53,6 +53,6 @@ Now we see the form of a normal distribution a little bit better.
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
 
 
-The source distributions mean is 0.998029 and it's standard deviation is 1.0008479
+The source distributions mean is 0.9929833 and it's standard deviation is 0.9953619
 
-The mean of the sample means is 1.006168 and it's standard deviation is 0.1261716. Multiplied by the square root of 67, the approximated standard deviation is 1.0327592.
+The mean of the sample means is 0.9947526 and it's standard deviation is 0.124253. Multiplied by the square root of 67, the approximated standard deviation is 1.017055.
